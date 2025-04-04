@@ -37,7 +37,7 @@ import java.util.Set;
 	    )
 	    private List<Predmet> predmeti;
 		
-		@JoinTable
+		
 		
 	    @OneToMany(mappedBy = "student")
 	    private List<Ispit> ispiti;

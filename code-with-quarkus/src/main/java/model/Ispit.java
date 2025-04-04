@@ -15,5 +15,5 @@ public class Ispit {
     @JoinColumn(name = "student_id")
     private Student student;
 
-    // Getteri i setteri
+   
 }
