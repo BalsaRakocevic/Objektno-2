@@ -9,9 +9,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = Predmet.GET_PREDMETI_FOR_STUDENT, query = "Select p from Predmet p where p.student.id = :id")
 public class Predmet {
+
+	public static final String GET_PREDMETI_FOR_STUDENT = "Predmet.getPredmetiForStudent";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
