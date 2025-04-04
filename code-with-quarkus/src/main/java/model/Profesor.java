@@ -1,7 +1,12 @@
 package model;
 
-import jakarta.persistence.*;
 import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Profesor {
@@ -14,6 +19,16 @@ public class Profesor {
 
     @OneToMany(mappedBy = "profesor")
     private List<Predmet> predmeti;
+
+    public Profesor(Long id, String ime, String prezime) {
+		super();
+        this.id = id;
+        this.ime = ime;
+        this.prezime = prezime;
+    }
+
+
+
 
 	public Long getId() {
 		return id;

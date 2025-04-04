@@ -1,12 +1,32 @@
 
 	package model;
 
-	import jakarta.persistence.*;
 	import java.util.List;
-import java.util.Set;
+
+	import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 
 	@Entity
+	@NamedQueries({
+		@NamedQuery(name = Student.GET_ALL_STUDENTS, query = "Select s from Student s"),
+		
+	})
 	public class Student {
+
+		
+	public static final String GET_ALL_STUDENTS = "Student.getAllStudents";
+	
+
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq")
 	    private Long id;

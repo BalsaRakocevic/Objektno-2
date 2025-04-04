@@ -1,0 +1,23 @@
+package com.example.resource;
+
+import com.example.model.Student;
+import com.example.repository.StudentRepository;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+@Path("/students")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class StudentResource {
+
+    @Inject
+    StudentRepository studentRepository;
+
+    @POST
+    public Response createStudent(Student student) {
+        studentRepository.createStudent(student);
+        return Response.status(Response.Status.CREATED).entity(student).build();
+    }
+}

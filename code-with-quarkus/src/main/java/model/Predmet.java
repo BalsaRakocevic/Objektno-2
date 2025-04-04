@@ -1,7 +1,14 @@
 package model;
 
-import jakarta.persistence.*;
 import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Predmet {
@@ -11,12 +18,23 @@ public class Predmet {
 
     private String naziv;
 
+
+
+
+	
     @ManyToOne
     @JoinColumn(name = "profesor_id")
     private Profesor profesor;
 
     @ManyToMany(mappedBy = "predmeti") 
     private List<Student> studenti;
+
+    public Predmet(Long id, String naziv, Profesor profesor) {
+		super();
+        this.id = id;
+        this.naziv = naziv;
+        this.profesor = profesor;
+    }
 
 	public Long getId() {
 		return id;
